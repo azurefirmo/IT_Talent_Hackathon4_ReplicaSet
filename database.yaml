@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: it-talent-hackathon-database-replicaset
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: database
+  template:
+    metadata:
+      labels:
+        component: database
+    spec:
+      containers:
+      - name: banco
+        image: mysql:latest
+        ports:
+        - name: db-port
+          containerPort: 3306
